@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>{{htmlName}}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+			<link href="../mui/css/mui.min.css" rel="stylesheet" />
+		<style>
+			.mui-table h4,.mui-table h5,.mui-table .mui-h5,.mui-table .mui-h6,.mui-table p{
+		        margin-top: 0;
+		    }
+		    .mui-table h4{
+		        line-height: 21px;
+		        font-weight: 500;
+		    }
+		
+		    .mui-table .oa-icon{
+		        position: absolute;
+		        right:0;
+		        bottom: 0;
+		    }
+		    .mui-table .oa-icon-star-filled{
+		        color:#f14e41;
+		    }
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <ul id="capptable" class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+		        <li class="mui-table-view-cell" v-for="item in cplist">
+		            <div class="mui-table">
+		                <div class="mui-table-cell mui-col-xs-10">
+		                    <h4 class="mui-ellipsis">{{item.deptName}}</h4>
+		                    <h5>申请人：{{item.personName}}</h5>
+		                    <p class="mui-h6 mui-ellipsis">{{item.planMemo}}</p>
+		                </div>
+		                <div class="mui-table-cell mui-col-xs-2 mui-text-right">
+		                    <span class="mui-h5">{{item.planTime}}</span>
+		                </div>
+		            </div>
+		        </li>
+		    </ul>
+		</div>
+	</body>
+	<script src="../mui/js/mui.min.js"></script>
+	<script src="../mui/js/axios.min.js"></script>
+	<script src="../mui/js/vue.min.js"></script>
+	<script type="text/javascript" src="../js/small.js" ></script>
+		
+	<script>
+	var app3 = new Vue({
+		el: '#capptable',
+		data: {
+			cplist: []
+		},
+		mounted: function() {
+//			this.$nextTick(function() {
+			axios.get(small.baseUrl+'/main/capitalPlan', {
+					params: {
+
+					}
+				}) .then(function(response) {
+					app3.cplist = response.data.o;
+				}).catch(function(response) {
+					
+				});
+//			})
+		}
+	})
+	</script>
+</html>
