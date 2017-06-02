@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../mui/css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../images/yuantiao.jpg">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-http://127.0.0.1:8020/hellomui1/examples/grid-default.html#slider-item-duplicate">
+						<a href="#">
+							<img src="../images/shuijiao.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<ul id="smallgrid" class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" v-for="item in olist" >
+					<a href="#">
+						<span  v-bind:class="item.liClass"></span>
+						<div class="mui-media-body">{{item.liName}}</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<script src="../mui/js/mui.min.js"></script>
+		<script src="../mui/js/axios.min.js"></script>
+		<script src="../mui/js/vue.min.js"></script>
+		<script type="text/javascript" src="../js/small.js" ></script>
+		<script type="text/javascript">
+			var app3 = new Vue({
+				el: '#smallgrid',
+				data: {
+					olist: []
+				},
+				mounted: function() {
+//					this.$nextTick(function() {
+					axios.get(small.baseUrl+'/main/index', {
+							params: {
+
+							}
+						}) .then(function(response) {
+// 							console.log(response.data.o);
+							app3.olist = response.data.o;
+						}).catch(function(response) {
+							
+						});
+//					})
+				}
+			})
+		</script>
+	</body>
+
+</html>
