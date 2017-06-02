@@ -1,21 +1,15 @@
 package com.ll.dd.web.dd;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.open.client.api.model.corp.CorpUserDetail;
 import com.ll.dd.contas.Env;
 import com.ll.dd.contas.Vars;
 import com.ll.dd.domain.ConfigQueryParam;
 import com.ll.dd.domain.DingConfig;
-import com.ll.dd.domain.DingUserInfo;
-import com.ll.dd.domain.UserInfoQueryParam;
 import com.ll.dd.exception.OApiException;
 import com.ll.dd.helper.AuthHelper;
 import com.ll.dd.helper.UserHelper;
